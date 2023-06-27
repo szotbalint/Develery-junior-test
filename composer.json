@@ -5,9 +5,11 @@
     "prefer-stable": true,
     "require": {
         "php": "7.3||^8.0",
+        "ext-pdo_sqlite": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^2.0",
+        "doctrine/dbal": "^3.6",
         "doctrine/doctrine-bundle": "^2.10",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.15",
