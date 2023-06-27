@@ -20,16 +20,19 @@ class Message
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Kitöltés kötelező..")
      */
     private $Name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Kitöltés kötelező..")
      */
     private $Email;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text")     
+     * @Assert\NotBlank(message="Kitöltés kötelező..")
      */
     private $Text;
 

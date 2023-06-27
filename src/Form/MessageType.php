@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\Valid;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -19,32 +20,27 @@ class MessageType extends AbstractType
     {
         $builder
         ->add('Name', TextType::class, [
-            'attr' => array(
-                'class' => 'bg-transparent block border-b-2 w-full h-20 text-6xl outline-none',
-                'placeholder' => 'Enter title...',
-            ),
+            'attr' => ['class' => 'form-control my-4', 'placeholder' => 'Adja meg nevét...'],
             'label' => false,
             'required' => false,
+            'error_bubbling'=>false,
         ])
         ->add('Email', EmailType::class, [
-            'attr' => array(
-                'class' => 'bg-transparent block mt-10 border-b-2 w-full h-60 text-6xl outline-none',
-                'placeholder' => 'Enter Email...'
-            ),
+            'attr' => ['class' => 'form-control my-4', 'placeholder' => 'Adja meg E-mail címét...'],
             'label' => false,
             'required' => false,
+            'error_bubbling'=>false,
         ])
             ->add('Text', TextareaType::class, [
-                'attr' => array(
-                    'class' => 'bg-transparent block mt-10 border-b-2 w-full h-60 text-6xl outline-none',
-                    'placeholder' => 'Enter the text...'
-                ),
+                'attr' => ['class' => 'form-control my-4', 'placeholder' => 'Üzenet szövege...'],
                 'label' => false,
                 'required' => false,
-                'constraints' => [
-                    new NotBlank(),
-                ],
+                'error_bubbling'=>false,
             ])
+            ->add('Send', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-dark w-25 fw-bold my-3 text-center d-flex mx-auto jutify-content-center'],
+                'label' => 'Küldés',
+            ]);
         ;
     }
 

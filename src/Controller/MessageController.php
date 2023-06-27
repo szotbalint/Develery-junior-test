@@ -36,16 +36,20 @@ class MessageController extends AbstractController
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $messageRepository->add($message, true);
-            $this->addFlash('notice', '"Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.');
-            return $this->redirectToRoute('app_message_new', [], Response::HTTP_SEE_OTHER);
+        if ($form->isSubmitted()) {
+            if (!$form->isValid()) {
+                $this->addFlash('error', 'Kérjük töltse ki az összes mezőt!');
+            }
+            if ($form->isValid())
+            {
+                $messageRepository->add($message, true);
+                $this->addFlash('notice', 'Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.');
+                return $this->redirectToRoute('app_message_new', [], Response::HTTP_SEE_OTHER);
+            }
+
         }
 
-        /* ezt az előző ifbe beletenni */
-        if ($form->isSubmitted() && !$form->isValid()) {
-            $this->addFlash('notice', 'Kérjük töltse ki az összes mezőt!');
-        }
+
 
         return $this->renderForm('message/new.html.twig', [
             'message' => $message,

@@ -4,13 +4,27 @@
 
 {% block body %}
 
-    <h1>Új üzenet küldése</h1>
+    <div class="container">
 
-    {% for message in app.session.flashBag.get('notice') %}
-        {{ message }}
-    {% endfor %}
+        <h1 class="text-center my-5">Új üzenet küldése</h1>
+
+        {% for message in app.session.flashBag.get('notice') %}
+            <div class="alert alert-success" role="alert">
+            {{ message }}
+            </div>
+        
+        {% endfor %}
+
+        {% for message in app.session.flashBag.get('error') %}
+            <div class="alert alert-danger" role="alert">
+            {{ message }}
+            </div>
+        
+        {% endfor %}
+    </div>
 
     {{ include('message/_form.html.twig') }}
 
-    <a href="{{ path('app_message_index') }}">back to list</a>
+    {# <button class="btn btn-primary"><a href="{{ path('app_message_index') }}" class="text-white">back to list</a></button> #}
+    
 {% endblock %}
