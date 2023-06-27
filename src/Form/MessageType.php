@@ -38,7 +38,7 @@ class MessageType extends AbstractType
                 'error_bubbling'=>false,
             ])
             ->add('Send', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-dark w-25 fw-bold my-3 text-center d-flex mx-auto jutify-content-center'],
+                'attr' => ['class' => 'btn btn-dark w-25 fw-bold my-3'],
                 'label' => 'Küldés',
             ]);
         ;
